@@ -1,0 +1,32 @@
+<div class="loading-spinner" *ngIf="profilesLoading">
+    <i class="fa-solid fa-spinner fa-spin"></i>
+</div>
+<div *ngIf="!profilesLoading">
+    <!-- <div class="profile-search-box">
+        <input type="text" placeholder="Enter keyword to search" 
+        [(ngModel)]="searchTerm"
+         class="form-control">
+    </div>
+    <br> -->
+    <div *ngFor="let profile of profiles">
+        <p>
+            {{profile.category}}
+        </p>
+        <hr>
+        <div>
+            <div class="row">
+                <div class="col-md-3 profile-card" *ngFor="let p of profile.profiles">
+                    <div class="card" (click)="OnProfileClick(p)">
+                        <div class="card-title">
+                            <img class="icon" alt={{p.name}} src={{transformIcons(p)}}>
+                        </div>
+                        <div class="card-body" title="Profile Name">
+                            {{p.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>

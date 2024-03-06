@@ -1,0 +1,11 @@
+@import '../../../../../custom-styles.scss';
+
+.profile-title-text {
+    color:$rebecca-purple;
+    font-size: x-large;
+}
+
+.form-check-input:checked {
+    background-color: $rebecca-purple;
+    border-color: $rebecca-purple
+}

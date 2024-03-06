@@ -1,0 +1,91 @@
+<div class="row d-flex" style="margin-top: 10%;" *ngIf="userData !== undefined && userData==null">
+    <div class="col-md-8 offset-md-2">
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <div>
+                    <img class="img-fluid" alt="NO_DATA_FOUND_IMAGE"
+                     src="../../../../assets/icons/no-profile-found.png" height="200" width="200">
+                </div>
+                <h2>No profile found !!</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h4>Create your <a routerLink="/signup">Pocket</a> account</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 2%;">
+    <div class="row" *ngIf="!isProfileLoadingFromAdmin && userData">
+        <div class="col-md-10 col-md-offset-1" title="Click here to share your profile">
+            <i class="fa-solid fa-share-from-square fa-2xl share-profile-icon" (click)="open(shareProfile)"
+                style="color: #B197FC;"></i>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center" *ngIf="userData && userData.additionalDetails">
+        <div class="col-12">
+            <div class="profile-picture mx-auto" 
+            [ngStyle]="isProfileLoadingFromAdmin ? {width: '80px', height: '80px'} : {width: '110px', height: '110px'}">
+                <img src="{{userData.additionalDetails.profilePictureUrl}}" alt="Profile Picture">
+            </div>
+            <div class="user-detail">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <b style="font-size: larger;">{{userData.additionalDetails.fullName}}</b>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <b>{{userData.additionalDetails.profession}} | {{userData.additionalDetails.category}}</b>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-12">
+                        {{userData.additionalDetails.bio.substring(0, 80)}}
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center" style="margin-top: 2%;" *ngIf="profiles.length === 0">
+                <div class="col-12">
+                    <h4>No profiles found</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 profile-items"
+                [ngClass]="!isProfileLoadingFromAdmin ? 'profile-scroller' : 'admin-profile-scroller' " 
+                [ngStyle]="{'height': isProfileLoadingFromAdmin ? '200px' : '470px'}">
+                    <div class="text-center" *ngFor="let profile of profiles">
+                        <div class="profile-item" (click)="navigateToUserProfile(profile)">
+                            <div><img class="icon" alt={{profile.name}} src={{transformIcons(profile)}}></div>
+                            <div>{{profile.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center" style="margin-top: 0%;" *ngIf="!isProfileLoadingFromAdmin && userData">
+        <div class="col-md-12 col-xs-12">
+            <div class="site-footer">
+                <h4>Made with ❤️ by <a href="https://www.linkedin.com/in/rohit-singh19/" target="_blank">ROHIT SINGH</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #shareProfile let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title text-center" id="modal-basic-title">Share your Pocket Profile</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-share-profile></app-share-profile>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+    </div>
+</ng-template>

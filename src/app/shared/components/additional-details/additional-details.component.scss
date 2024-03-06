@@ -1,0 +1,54 @@
+@import "../../../../custom-styles.scss";
+
+.button-checkbox {
+  display: inline-block;
+  margin: 5px;
+}
+
+.button-checkbox input {
+  display: none;
+}
+
+.button-checkbox label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.button-checkbox input:checked+label, .btn-info {
+  background-color: $medium-purple;
+  color: #fff;
+  border-color: $rebecca-purple;
+}
+
+.card {
+  background-color: $light-grey;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-uploader {
+  cursor: pointer;  
+}
+
+.btn-continue {
+  background-color: $medium-purple;
+  color: #fff;
+  border-color: $rebecca-purple;
+}

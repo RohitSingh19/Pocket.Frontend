@@ -1,0 +1,133 @@
+<ngx-loading-bar color="#FFFFFF"></ngx-loading-bar>
+<div class="admin">
+    <div class="row admin-banner">
+        <div class="col-md-12">
+            <div class="admin-profiler" *ngIf="userData">
+                <div class="row admin-primary-info">
+                    <div class="col-md-2 col-xs-12">
+                        <div class="profile-picture">
+                            <img src="{{userPrimaryDetails.profilePictureUrl}}" alt="Profile Picture">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="admin-info">
+                            <div class="title align-items-center">{{userPrimaryDetails.fullName}}
+                                <i (click)="open(shareProfile)" class="fa-solid fa-share-nodes share-link"></i>
+                            </div>
+                            <div class="email">{{userData.email}} | {{userPrimaryDetails.profession}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-12">
+                        <div class="admin-info-link">
+                            <label>Your Pocket profile link</label>
+                            <div class="admin-profile-link">
+                                <a href="{{this.appURL}}/{{userData.userName}}" target="_blank"
+                                    style="color: blueviolet;">{{this.appURL}}/{{userData.userName}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="admin-sharing-button">
+                            <i class="fa-solid fa-share-from-square fa-2xl share-profile-icon"
+                                (click)="open(shareProfile)" style="color: #B197FC;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="admin-settings">
+                            <div class="admin-setting-icon">
+                                <i class="fa-solid fa-gear fa-2xl"></i>
+                            </div>
+                            <br><br>
+                            <div class="options">
+                                <a (click)="navigateForEdit()">Edit Profile</a>
+                                <br>
+                                <a (click)="logout()">Logout </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 p-4">
+            <div class="p-4">
+                <button type="submit" class="btn btn-primary btn-block" (click)="open(profilesList)"
+                    style="width: 100%; margin-top: 25px;">
+                    + Add Your Profile</button>
+                <br>
+                <app-profile-item (reloadProfilesEvent)="reloadProfiles()"
+                    [profileItem]="receivedProfileItem"></app-profile-item>
+
+                <br>
+
+                <div class="no-data-message" *ngIf="profiles.length === 0">
+                    <h2>Empty Pocket!! Add some profiles..</h2>
+                </div>
+
+                <div class="loading-spinner" *ngIf="profilesLoading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                </div>
+                <div class="profile-items">
+                    <div class="row profile-item" *ngFor="let profile of profiles">
+                        <div class="col-1">
+                            <img class="icon" alt={{profile.name}} src={{transformIcons(profile)}}>
+                        </div>
+                        <div class="col-8">
+                            {{profile.name}}
+                        </div>
+                        <div class="col-1" title="Edit Profile">
+                            <a (click)="onProfileEditClick(profile)"><i
+                                    class="fa-solid fa-pen-to-square edit-icon"></i></a>
+                        </div>
+                        <div class="col-1" title="Delete Profile">
+                            <a (click)="onProfileDeleteClick(profile)"><i class="fa-solid fa-trash delete-icon"></i></a>
+                        </div>
+                        <div class="col-1" title="View Profile">
+                            <a [href]="profile.baseUrl+profile.profileUserName" target="_blank"><i
+                                    class="fa-solid fa-location-arrow navigate-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 p-4">
+            <div class="pocket-preview">
+                <app-pocket-preview></app-pocket-preview>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <ng-template #profilesList let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title text-center" id="modal-basic-title">Add to Pocket</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <app-profiles-listing (childEvent)="receiveMessage($event)"></app-profiles-listing>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+        </div>
+    </ng-template>
+
+
+    <ng-template #shareProfile let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title text-center" id="modal-basic-title">Share your Pocket Profile</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <app-share-profile></app-share-profile>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+        </div>
+    </ng-template>

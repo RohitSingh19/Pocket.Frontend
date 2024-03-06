@@ -1,0 +1,27 @@
+.share-social-profile:hover {
+    cursor: pointer;
+}
+
+.share-social-profile .icon {
+    height: 50px;
+    width: 50px;
+}
+
+.pocket-url {
+    padding: 10px;
+    background-color: gainsboro;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+}
+
+.pocket-url .url {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.pocket-url .link-copy {
+    margin-left: 15px;
+    font-weight: bolder;
+    color: blueviolet;
+}

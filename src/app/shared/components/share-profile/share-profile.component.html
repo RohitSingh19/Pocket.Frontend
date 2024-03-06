@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-xs-2 profile-card" *ngFor="let profile of shareProfiles">
+            <div class="share-social-profile" title="Share you Pocket profile on {{profile.type}}"
+                (click)="this.shareProfileClickHandler(profile.type)">
+                <div><img class="icon" alt={{profile.type}} src={{transformIcons(profile.type)}}></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="pocket-url text-center" title="Click to copy" (click)="copyToClipboard(pocketProfileUrl)">
+                <div class="link-icon"><i class="fa-solid fa-link"></i></div>
+                <div> <a class="url" target="_blank" [href]="pocketProfileUrl">{{pocketProfileUrl}}</a> </div>
+                <div class="link-copy"><i class="fa-regular fa-copy"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

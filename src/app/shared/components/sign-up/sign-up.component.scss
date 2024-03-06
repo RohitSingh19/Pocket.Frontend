@@ -1,0 +1,28 @@
+@import "../../../../styles.scss";
+
+.card {    
+    background-color: $light-grey;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+  
+.spinner {
+    position: absolute;
+    top: 35%;
+    right: 30px;
+    transform: translateY(-50%);
+    color: #333; /* Customize the color as needed */
+}
+
+.success-text {
+  border-color: $medium-purple;
+  box-shadow: inset 0 1px 1px rgba(10, 250, 30, 0.6), 0 0 8px rgba(10, 250, 30, 0.6);
+}
+
+.failure-text {
+  border-color: $medium-purple;
+  box-shadow: inset 0 1px 1px rgba(250, 10, 10, 0.6), 0 0 8px rgba(250, 10, 10, 0.6);
+}
