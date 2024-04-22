@@ -6,13 +6,13 @@ import { UserService } from '../../services/user/user.service';
 import { APIResponse, UserData } from 'src/app/core/models/response.model';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
   isEmailValid: boolean = false;
@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
   }
   
   constructor(private authService: AuthService, private userService: UserService,
-            private localStorage: LocalStorageService, private router: Router, private toastr: ToastrService) {  
+            private localStorage: LocalStorageService, private router: Router) {  
   }
 
   signUpForm = new FormGroup({
@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit {
             this.isEmailValid = !(response.data) as boolean;
             this.showSpinner = false;
             if (response.data) {
-              this.toastr.error(response.message);
+              // this.toastr.error(response.message);
               emailControl.setErrors({'invalid': true});
             }})
         } else {
@@ -81,7 +81,7 @@ export class SignUpComponent implements OnInit {
           this.userService.isUserNametaken(value).subscribe((response: APIResponse) => {
             this.isUserNameValid = !(response.data) as boolean;
             if (response.data) {
-              this.toastr.error(response.message);
+              // this.toastr.error(response.message);
               userNameControl.setErrors({'invalid': true});
             }})
         } else {

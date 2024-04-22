@@ -5,7 +5,7 @@ import { ProfileService } from 'src/app/shared/services/profile/profile.service'
 @Component({
   selector: 'app-pocket-preview',
   templateUrl: './pocket-preview.component.html',
-  styleUrls: ['./pocket-preview.component.scss']
+  styleUrls: ['./pocket-preview.component.css']
 })
 export class PocketPreviewComponent implements OnInit {
   

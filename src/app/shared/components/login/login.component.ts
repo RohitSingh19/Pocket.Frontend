@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { APIResponse, UserData } from 'src/app/core/models/response.model';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { UserStageHandler } from 'src/app/core/UserStageHandler';
 
 
@@ -12,12 +12,12 @@ import { UserStageHandler } from 'src/app/core/UserStageHandler';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
     constructor(private auth: AuthService, private localStorage: LocalStorageService,
-         private router: Router, private toastr: ToastrService, private userStageHandler: UserStageHandler) {
+         private router: Router, private userStageHandler: UserStageHandler) {
     }
 
     loginForm = new FormGroup({
@@ -34,7 +34,7 @@ export class LoginComponent {
             this.localStorage.saveUserInfo(token, email, userName);
             this.userStageHandler.handleStage(stage);
           } else {
-            this.toastr.error(response.message);
+            // this.toastr.error(response.message);
           }
         });
       }

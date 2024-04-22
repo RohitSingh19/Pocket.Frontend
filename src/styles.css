@@ -1,27 +1,33 @@
-/*All global styles goes here*/
+/* You can add global styles to this file, and also import other style files */
 
+/* Importing Bootstrap SCSS file. */
+/* @import 'bootstrap/css/bootstrap'; */
+/* @import 'ngx-toastr/toastr-bs5-alert';
+@import 'ngx-toastr/toastr'; */
+/* @import './custom-styles.scss'; */
 
-$light-grey: #f8f9fa;
-$medium-purple:#9370DB;
-$rebecca-purple:#663399;
-
+:root {
+    --light-grey: #f8f9fa;
+    --medium-purple:#9370DB;
+    --rebecca-purple:#663399;
+}
 
 html, body {
-    font-family: 'Muli' !important; //overriding the font-family from bootstrap
+    font-family: 'Muli' !important; 
 }
 
 .form-control:focus {
-    border-color: $medium-purple;
+    border-color: var(--medium-purple);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 51, 153, 0.6);
 }
 
 a {
- color: $rebecca-purple;
+ color: var(--rebecca-purple);
 }
 
 .btn {
-    background-color: $rebecca-purple !important;
-    border: $rebecca-purple !important;
+    background-color: var(--rebecca-purple) !important;
+    border: var(--rebecca-purple) !important;
 }
 
 .error-msg {

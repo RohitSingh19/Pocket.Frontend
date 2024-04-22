@@ -6,7 +6,7 @@ import { ProfileService } from 'src/app/shared/services/profile/profile.service'
 @Component({
   selector: 'app-profiles-listing',
   templateUrl: './profiles-listing.component.html',
-  styleUrls: ['./profiles-listing.component.scss']
+  styleUrls: ['./profiles-listing.component.css']
 })
 export class ProfilesListingComponent implements OnInit {
 

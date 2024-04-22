@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrModule } from 'ngx-toastr';
+// import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 
@@ -49,12 +49,12 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot(
-      {
-        positionClass: 'toast-bottom-right',
-        preventDuplicates: true,
-      }
-    ),
+    // ToastrModule.forRoot(
+    //   {
+    //     positionClass: 'toast-bottom-right',
+    //     preventDuplicates: true,
+    //   }
+    // ),
     LoadingBarHttpClientModule 
   ],
   providers: [API, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

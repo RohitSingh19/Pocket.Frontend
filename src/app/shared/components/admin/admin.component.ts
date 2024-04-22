@@ -7,12 +7,12 @@ import { UserService } from '../../services/user/user.service';
 import { TransformIcons } from 'src/app/core/TransformIcons';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  styleUrls: ['./admin.component.css'],
   providers: [NgbModalConfig, NgbModal],
 })
 export class AdminComponent implements OnInit {
@@ -31,7 +31,7 @@ export class AdminComponent implements OnInit {
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, private localStorage: LocalStorageService,
        private profileService: ProfileService, private userService: UserService, private icons: TransformIcons,
-       private router: Router, @Inject(DOCUMENT) private document: Document, private toastr: ToastrService) 
+       private router: Router, @Inject(DOCUMENT) private document: Document) 
   {
 		config.backdrop = 'static';
 		config.keyboard = false;
@@ -69,9 +69,9 @@ export class AdminComponent implements OnInit {
       if(res.success) {
           this.profiles = this.profiles.filter((p) => p.name !== profile.name);
           this.profileService.setProfilesForPreview(this.profiles);
-          this.toastr.success('Profile deleted successfully!!');
+          // this.toastr.success('Profile deleted successfully!!');
       } else {
-        this.toastr.error('Unable to delete profile, Pls try again after some time!!');
+        // this.toastr.error('Unable to delete profile, Pls try again after some time!!');
       }
     })
   }

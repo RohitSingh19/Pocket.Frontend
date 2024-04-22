@@ -6,12 +6,12 @@ import { ProfileService } from '../../services/profile/profile.service';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { TransformIcons } from 'src/app/core/TransformIcons';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private userService: UserService, private config: NgbModalConfig,
     private profileService: ProfileService, private localStorage: LocalStorageService,
-    private icons: TransformIcons, private modalService: NgbModal, private toastr: ToastrService) {
+    private icons: TransformIcons, private modalService: NgbModal) {
 
     this.route.paramMap.subscribe((params) => {
       if (params.has('userName')) {

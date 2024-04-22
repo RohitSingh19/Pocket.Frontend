@@ -1,13 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { TransformIcons } from 'src/app/core/TransformIcons';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-share-profile',
   templateUrl: './share-profile.component.html',
-  styleUrls: ['./share-profile.component.scss']
+  styleUrls: ['./share-profile.component.css']
 })
 export class ShareProfileComponent {
   
@@ -16,7 +16,7 @@ export class ShareProfileComponent {
   pocketProfileUrl: string | any;
 
   constructor(private icons: TransformIcons, private localStorage: LocalStorageService,
-     private toastr: ToastrService, @Inject(DOCUMENT) private document: Document) {
+     @Inject(DOCUMENT) private document: Document) {
     this.displaySocialShareProfiles();
     this.pocketProfileUrl = `${this.document.location.origin}/${this.localStorage.getUserName()}`
   }
@@ -117,7 +117,7 @@ export class ShareProfileComponent {
       if(e.clipboardData) {
         e.clipboardData.setData('text/plain', (item));
         e.preventDefault();
-        this.toastr.info('Copied!!');
+        // this.toastr.info('Copied!!');
       } 
       document.removeEventListener('copy', (e: ClipboardEvent) => {});
     });

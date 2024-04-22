@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { Profile } from 'src/app/core/models/response.model';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { ProfileService } from 'src/app/shared/services/profile/profile.service';
@@ -7,7 +7,7 @@ import { ProfileService } from 'src/app/shared/services/profile/profile.service'
 @Component({
   selector: 'app-profile-item',
   templateUrl: './profile-item.component.html',
-  styleUrls: ['./profile-item.component.scss']
+  styleUrls: ['./profile-item.component.css']
 })
 export class ProfileItemComponent implements OnInit{
   
@@ -20,7 +20,7 @@ export class ProfileItemComponent implements OnInit{
   userName: string | any;
 
   constructor(private profileService: ProfileService,
-           private localStorageService: LocalStorageService, private toastr: ToastrService) {
+           private localStorageService: LocalStorageService) {
     
   };
   
@@ -61,20 +61,20 @@ export class ProfileItemComponent implements OnInit{
     if(!this.isProfileAlreadyAdded(profileItem.id)) {
       this.saveProfileInDb(profileItem).subscribe((res) => {
         if(res.success) {
-            this.toastr.info(`${profileItem.name} added in your pocket successfully!!`);
+            // this.toastr.info(`${profileItem.name} added in your pocket successfully!!`);
             this.addProfile(profileItem);
             this.reloadProfilesInAdmin();
         }
       });
     } else {
-      this.toastr.info('Profile already included');
+      // this.toastr.info('Profile already included');
     }
   }
   
   editPocketProfile() {
     this.profileItem.profileUserName = this.profileUserName;
     this.profileService.updatePocketProfile(this.profileItem, this.userName).subscribe((res) => {
-      this.toastr.info(`Profile Updated Successfully!!`);
+      // this.toastr.info(`Profile Updated Successfully!!`);
       this.reloadProfilesInAdmin();
     })
   }

@@ -1,4 +1,4 @@
-@import '../../../../custom-styles.scss';
+
 
 
 /* width */
@@ -49,9 +49,9 @@
 
 
 .profile-header {
-    background-color: $rebecca-purple;
+    background-color: var(--rebecca-purple);
     height: 100px;
-    background-image: linear-gradient(to right, $rebecca-purple , $medium-purple);
+    background-image: linear-gradient(to right, var(--rebecca-purple) , var(--medium-purple));
     position: relative;
 }
 
@@ -71,7 +71,7 @@
     overflow-x: hidden;
 }
 .profile-item {
-    background-color: $light-grey;
+    background-color: var(--light-grey);
     border: 2px solid white;
     padding: 10px;
     border-radius: 14px;
@@ -103,6 +103,6 @@
 }
 
 .site-footer a{
-    color: $rebecca-purple;
+    color: var(--rebecca-purple);
     text-decoration: none;
 }

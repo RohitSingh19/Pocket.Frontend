@@ -1,7 +1,7 @@
 export class API {
     UseAuth: string = 'use-auth';
-    BASE_URL1 = 'https://localhost:7064/api/';
-    BASE_URL = 'https://pocketapi20240313174808.azurewebsites.net/api/';
+    BASE_URL = 'https://localhost:7064/api/';
+    BASE_URL1 = 'https://pocketapi20240313174808.azurewebsites.net/api/';
     Auth = {
         login: this.BASE_URL + 'auth/login',
         register: this.BASE_URL + 'auth/register'   

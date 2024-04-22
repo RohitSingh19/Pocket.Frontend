@@ -3,7 +3,7 @@ import { UserService } from '../../services/user/user.service';
 import { APIResponse, AdditionalDetails, ImageUploadResult, Profession, UserData } from 'src/app/core/models/response.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { PhotoService } from '../../services/photo/photo.service';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
@@ -11,7 +11,7 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 @Component({
   selector: 'app-additional-details',
   templateUrl: './additional-details.component.html',
-  styleUrls: ['./additional-details.component.scss']
+  styleUrls: ['./additional-details.component.css']
 })
 export class AdditionalDetailsComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class AdditionalDetailsComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
 
   
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService,
+  constructor(private userService: UserService, private router: Router,
     config: NgbModalConfig, private modalService: NgbModal, private photoService: PhotoService,
     private route: ActivatedRoute, private localStorage: LocalStorageService) 
   {
@@ -104,10 +104,10 @@ export class AdditionalDetailsComponent implements OnInit {
     additionalDetails.profilePictureUrl = this.profilePictureUrl;
     this.userService.saveAdditionalDetails(additionalDetails).subscribe((res: APIResponse) => {
       if(res.success) {
-        this.toastr.info('Profile updated successfully!!');
+        // this.toastr.info('Profile updated successfully!!');
         this.router.navigate(['/admin']);
       } else {
-        this.toastr.error(res.message);
+        // this.toastr.error(res.message);
       }
     });
   }
